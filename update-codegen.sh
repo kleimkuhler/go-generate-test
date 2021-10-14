@@ -14,7 +14,6 @@ GO111MODULE='on' "${codegen_pkg}/generate-groups.sh" \
   "github.com/kleimkuhler/go-generate-test/examples/crd" \
   "github.com/kleimkuhler/go-generate-test/examples/crd/apis" \
   "example:v1 example2:v1" \
-  -v 10
   --go-header-file "${codegen_pkg}"/hack/boilerplate.go.txt
 
 cp -R "${GOPATH}/src/github.com/kleimkuhler/go-generate-test/examples/crd" 'examples/'
