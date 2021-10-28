@@ -24,22 +24,22 @@ import (
 	rest "k8s.io/client-go/rest"
 )
 
-type SecondExampleV1Interface interface {
+type Example2V1Interface interface {
 	RESTClient() rest.Interface
 	TestTypesGetter
 }
 
-// SecondExampleV1Client is used to interact with features provided by the example.test.crd.code-generator.k8s.io group.
-type SecondExampleV1Client struct {
+// Example2V1Client is used to interact with features provided by the example2 group.
+type Example2V1Client struct {
 	restClient rest.Interface
 }
 
-func (c *SecondExampleV1Client) TestTypes(namespace string) TestTypeInterface {
+func (c *Example2V1Client) TestTypes(namespace string) TestTypeInterface {
 	return newTestTypes(c, namespace)
 }
 
-// NewForConfig creates a new SecondExampleV1Client for the given config.
-func NewForConfig(c *rest.Config) (*SecondExampleV1Client, error) {
+// NewForConfig creates a new Example2V1Client for the given config.
+func NewForConfig(c *rest.Config) (*Example2V1Client, error) {
 	config := *c
 	if err := setConfigDefaults(&config); err != nil {
 		return nil, err
@@ -48,12 +48,12 @@ func NewForConfig(c *rest.Config) (*SecondExampleV1Client, error) {
 	if err != nil {
 		return nil, err
 	}
-	return &SecondExampleV1Client{client}, nil
+	return &Example2V1Client{client}, nil
 }
 
-// NewForConfigOrDie creates a new SecondExampleV1Client for the given config and
+// NewForConfigOrDie creates a new Example2V1Client for the given config and
 // panics if there is an error in the config.
-func NewForConfigOrDie(c *rest.Config) *SecondExampleV1Client {
+func NewForConfigOrDie(c *rest.Config) *Example2V1Client {
 	client, err := NewForConfig(c)
 	if err != nil {
 		panic(err)
@@ -61,9 +61,9 @@ func NewForConfigOrDie(c *rest.Config) *SecondExampleV1Client {
 	return client
 }
 
-// New creates a new SecondExampleV1Client for the given RESTClient.
-func New(c rest.Interface) *SecondExampleV1Client {
-	return &SecondExampleV1Client{c}
+// New creates a new Example2V1Client for the given RESTClient.
+func New(c rest.Interface) *Example2V1Client {
+	return &Example2V1Client{c}
 }
 
 func setConfigDefaults(config *rest.Config) error {
@@ -81,7 +81,7 @@ func setConfigDefaults(config *rest.Config) error {
 
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
-func (c *SecondExampleV1Client) RESTClient() rest.Interface {
+func (c *Example2V1Client) RESTClient() rest.Interface {
 	if c == nil {
 		return nil
 	}

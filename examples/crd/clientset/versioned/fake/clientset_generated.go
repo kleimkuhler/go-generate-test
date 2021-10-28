@@ -22,8 +22,8 @@ import (
 	clientset "github.com/kleimkuhler/go-generate-test/examples/crd/clientset/versioned"
 	examplev1 "github.com/kleimkuhler/go-generate-test/examples/crd/clientset/versioned/typed/example/v1"
 	fakeexamplev1 "github.com/kleimkuhler/go-generate-test/examples/crd/clientset/versioned/typed/example/v1/fake"
-	secondexamplev1 "github.com/kleimkuhler/go-generate-test/examples/crd/clientset/versioned/typed/example2/v1"
-	fakesecondexamplev1 "github.com/kleimkuhler/go-generate-test/examples/crd/clientset/versioned/typed/example2/v1/fake"
+	example2v1 "github.com/kleimkuhler/go-generate-test/examples/crd/clientset/versioned/typed/example2/v1"
+	fakeexample2v1 "github.com/kleimkuhler/go-generate-test/examples/crd/clientset/versioned/typed/example2/v1/fake"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"
@@ -83,7 +83,7 @@ func (c *Clientset) ExampleV1() examplev1.ExampleV1Interface {
 	return &fakeexamplev1.FakeExampleV1{Fake: &c.Fake}
 }
 
-// SecondExampleV1 retrieves the SecondExampleV1Client
-func (c *Clientset) SecondExampleV1() secondexamplev1.SecondExampleV1Interface {
-	return &fakesecondexamplev1.FakeSecondExampleV1{Fake: &c.Fake}
+// Example2V1 retrieves the Example2V1Client
+func (c *Clientset) Example2V1() example2v1.Example2V1Interface {
+	return &fakeexample2v1.FakeExample2V1{Fake: &c.Fake}
 }

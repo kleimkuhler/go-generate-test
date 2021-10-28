@@ -36,9 +36,9 @@ type FakeClusterTestTypes struct {
 	Fake *FakeExampleV1
 }
 
-var clustertesttypesResource = schema.GroupVersionResource{Group: "example.io", Version: "v1", Resource: "clustertesttypes"}
+var clustertesttypesResource = schema.GroupVersionResource{Group: "example", Version: "v1", Resource: "clustertesttypes"}
 
-var clustertesttypesKind = schema.GroupVersionKind{Group: "example.io", Version: "v1", Kind: "ClusterTestType"}
+var clustertesttypesKind = schema.GroupVersionKind{Group: "example", Version: "v1", Kind: "ClusterTestType"}
 
 // Get takes name of the clusterTestType, and returns the corresponding clusterTestType object, and an error if there is any.
 func (c *FakeClusterTestTypes) Get(ctx context.Context, name string, options v1.GetOptions) (result *examplev1.ClusterTestType, err error) {

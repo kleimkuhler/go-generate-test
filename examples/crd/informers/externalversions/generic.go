@@ -53,15 +53,15 @@ func (f *genericInformer) Lister() cache.GenericLister {
 // TODO extend this to unknown resources with a client pool
 func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource) (GenericInformer, error) {
 	switch resource {
-	// Group=example.io, Version=v1
+	// Group=example, Version=v1
 	case v1.SchemeGroupVersion.WithResource("clustertesttypes"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Example().V1().ClusterTestTypes().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("testtypes"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Example().V1().TestTypes().Informer()}, nil
 
-		// Group=example.test.crd.code-generator.k8s.io, Version=v1
+		// Group=example2, Version=v1
 	case example2v1.SchemeGroupVersion.WithResource("testtypes"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.SecondExample().V1().TestTypes().Informer()}, nil
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Example2().V1().TestTypes().Informer()}, nil
 
 	}
 
