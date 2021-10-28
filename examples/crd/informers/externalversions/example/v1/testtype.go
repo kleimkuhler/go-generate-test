@@ -62,13 +62,13 @@ func NewFilteredTestTypeInformer(client versioned.Interface, namespace string, r
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.ExampleV1().TestTypes(namespace).List(context.TODO(), options)
+				return client.FooV1().TestTypes(namespace).List(context.TODO(), options)
 			},
 			WatchFunc: func(options metav1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.ExampleV1().TestTypes(namespace).Watch(context.TODO(), options)
+				return client.FooV1().TestTypes(namespace).Watch(context.TODO(), options)
 			},
 		},
 		&examplev1.TestType{},

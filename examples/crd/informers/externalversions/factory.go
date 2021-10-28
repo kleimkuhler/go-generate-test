@@ -173,14 +173,14 @@ type SharedInformerFactory interface {
 	ForResource(resource schema.GroupVersionResource) (GenericInformer, error)
 	WaitForCacheSync(stopCh <-chan struct{}) map[reflect.Type]bool
 
-	Example() example.Interface
-	Example2() example2.Interface
+	Foo() example.Interface
+	Foo() example2.Interface
 }
 
-func (f *sharedInformerFactory) Example() example.Interface {
+func (f *sharedInformerFactory) Foo() example.Interface {
 	return example.New(f, f.namespace, f.tweakListOptions)
 }
 
-func (f *sharedInformerFactory) Example2() example2.Interface {
+func (f *sharedInformerFactory) Foo() example2.Interface {
 	return example2.New(f, f.namespace, f.tweakListOptions)
 }

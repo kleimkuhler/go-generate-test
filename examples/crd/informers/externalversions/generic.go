@@ -22,7 +22,6 @@ import (
 	"fmt"
 
 	v1 "github.com/kleimkuhler/go-generate-test/examples/crd/apis/example/v1"
-	example2v1 "github.com/kleimkuhler/go-generate-test/examples/crd/apis/example2/v1"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
 )
@@ -53,15 +52,21 @@ func (f *genericInformer) Lister() cache.GenericLister {
 // TODO extend this to unknown resources with a client pool
 func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource) (GenericInformer, error) {
 	switch resource {
-	// Group=example, Version=v1
+	// Group=foo.bar, Version=v1
 	case v1.SchemeGroupVersion.WithResource("clustertesttypes"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Example().V1().ClusterTestTypes().Informer()}, nil
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Foo().V1().ClusterTestTypes().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("testtypes"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Example().V1().TestTypes().Informer()}, nil
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Foo().V1().TestTypes().Informer()}, nil
+	case v1.SchemeGroupVersion.WithResource("testtypes"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Foo().V1().TestTypes().Informer()}, nil
 
-		// Group=example2, Version=v1
-	case example2v1.SchemeGroupVersion.WithResource("testtypes"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Example2().V1().TestTypes().Informer()}, nil
+		// Group=foo.bar, Version=v1
+	case v1.SchemeGroupVersion.WithResource("clustertesttypes"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Foo().V1().ClusterTestTypes().Informer()}, nil
+	case v1.SchemeGroupVersion.WithResource("testtypes"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Foo().V1().TestTypes().Informer()}, nil
+	case v1.SchemeGroupVersion.WithResource("testtypes"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Foo().V1().TestTypes().Informer()}, nil
 
 	}
 

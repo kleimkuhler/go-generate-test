@@ -24,22 +24,22 @@ import (
 	rest "k8s.io/client-go/rest"
 )
 
-type Example2V1Interface interface {
+type FooV1Interface interface {
 	RESTClient() rest.Interface
 	TestTypesGetter
 }
 
-// Example2V1Client is used to interact with features provided by the example2 group.
-type Example2V1Client struct {
+// FooV1Client is used to interact with features provided by the foo.bar group.
+type FooV1Client struct {
 	restClient rest.Interface
 }
 
-func (c *Example2V1Client) TestTypes(namespace string) TestTypeInterface {
+func (c *FooV1Client) TestTypes(namespace string) TestTypeInterface {
 	return newTestTypes(c, namespace)
 }
 
-// NewForConfig creates a new Example2V1Client for the given config.
-func NewForConfig(c *rest.Config) (*Example2V1Client, error) {
+// NewForConfig creates a new FooV1Client for the given config.
+func NewForConfig(c *rest.Config) (*FooV1Client, error) {
 	config := *c
 	if err := setConfigDefaults(&config); err != nil {
 		return nil, err
@@ -48,12 +48,12 @@ func NewForConfig(c *rest.Config) (*Example2V1Client, error) {
 	if err != nil {
 		return nil, err
 	}
-	return &Example2V1Client{client}, nil
+	return &FooV1Client{client}, nil
 }
 
-// NewForConfigOrDie creates a new Example2V1Client for the given config and
+// NewForConfigOrDie creates a new FooV1Client for the given config and
 // panics if there is an error in the config.
-func NewForConfigOrDie(c *rest.Config) *Example2V1Client {
+func NewForConfigOrDie(c *rest.Config) *FooV1Client {
 	client, err := NewForConfig(c)
 	if err != nil {
 		panic(err)
@@ -61,9 +61,9 @@ func NewForConfigOrDie(c *rest.Config) *Example2V1Client {
 	return client
 }
 
-// New creates a new Example2V1Client for the given RESTClient.
-func New(c rest.Interface) *Example2V1Client {
-	return &Example2V1Client{c}
+// New creates a new FooV1Client for the given RESTClient.
+func New(c rest.Interface) *FooV1Client {
+	return &FooV1Client{c}
 }
 
 func setConfigDefaults(config *rest.Config) error {
@@ -81,7 +81,7 @@ func setConfigDefaults(config *rest.Config) error {
 
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
-func (c *Example2V1Client) RESTClient() rest.Interface {
+func (c *FooV1Client) RESTClient() rest.Interface {
 	if c == nil {
 		return nil
 	}

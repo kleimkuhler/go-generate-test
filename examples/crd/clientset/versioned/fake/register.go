@@ -19,8 +19,7 @@ limitations under the License.
 package fake
 
 import (
-	examplev1 "github.com/kleimkuhler/go-generate-test/examples/crd/apis/example/v1"
-	example2v1 "github.com/kleimkuhler/go-generate-test/examples/crd/apis/example2/v1"
+	foov1 "github.com/kleimkuhler/go-generate-test/examples/crd/apis/example2/v1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -32,8 +31,8 @@ var scheme = runtime.NewScheme()
 var codecs = serializer.NewCodecFactory(scheme)
 
 var localSchemeBuilder = runtime.SchemeBuilder{
-	examplev1.AddToScheme,
-	example2v1.AddToScheme,
+	foov1.AddToScheme,
+	foov1.AddToScheme,
 }
 
 // AddToScheme adds all types of this clientset into the given scheme. This allows composition

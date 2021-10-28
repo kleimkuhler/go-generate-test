@@ -61,13 +61,13 @@ func NewFilteredClusterTestTypeInformer(client versioned.Interface, resyncPeriod
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.ExampleV1().ClusterTestTypes().List(context.TODO(), options)
+				return client.FooV1().ClusterTestTypes().List(context.TODO(), options)
 			},
 			WatchFunc: func(options metav1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.ExampleV1().ClusterTestTypes().Watch(context.TODO(), options)
+				return client.FooV1().ClusterTestTypes().Watch(context.TODO(), options)
 			},
 		},
 		&examplev1.ClusterTestType{},

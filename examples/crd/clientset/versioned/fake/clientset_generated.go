@@ -20,10 +20,10 @@ package fake
 
 import (
 	clientset "github.com/kleimkuhler/go-generate-test/examples/crd/clientset/versioned"
-	examplev1 "github.com/kleimkuhler/go-generate-test/examples/crd/clientset/versioned/typed/example/v1"
-	fakeexamplev1 "github.com/kleimkuhler/go-generate-test/examples/crd/clientset/versioned/typed/example/v1/fake"
-	example2v1 "github.com/kleimkuhler/go-generate-test/examples/crd/clientset/versioned/typed/example2/v1"
-	fakeexample2v1 "github.com/kleimkuhler/go-generate-test/examples/crd/clientset/versioned/typed/example2/v1/fake"
+	foov1 "github.com/kleimkuhler/go-generate-test/examples/crd/clientset/versioned/typed/example/v1"
+	fakefoov1 "github.com/kleimkuhler/go-generate-test/examples/crd/clientset/versioned/typed/example/v1/fake"
+	foov1 "github.com/kleimkuhler/go-generate-test/examples/crd/clientset/versioned/typed/example2/v1"
+	fakefoov1 "github.com/kleimkuhler/go-generate-test/examples/crd/clientset/versioned/typed/example2/v1/fake"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"
@@ -78,12 +78,12 @@ func (c *Clientset) Tracker() testing.ObjectTracker {
 
 var _ clientset.Interface = &Clientset{}
 
-// ExampleV1 retrieves the ExampleV1Client
-func (c *Clientset) ExampleV1() examplev1.ExampleV1Interface {
-	return &fakeexamplev1.FakeExampleV1{Fake: &c.Fake}
+// FooV1 retrieves the FooV1Client
+func (c *Clientset) FooV1() foov1.FooV1Interface {
+	return &fakefoov1.FakeFooV1{Fake: &c.Fake}
 }
 
-// Example2V1 retrieves the Example2V1Client
-func (c *Clientset) Example2V1() example2v1.Example2V1Interface {
-	return &fakeexample2v1.FakeExample2V1{Fake: &c.Fake}
+// FooV1 retrieves the FooV1Client
+func (c *Clientset) FooV1() foov1.FooV1Interface {
+	return &fakefoov1.FakeFooV1{Fake: &c.Fake}
 }

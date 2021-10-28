@@ -19,32 +19,27 @@ limitations under the License.
 package v1
 
 import (
-	v1 "github.com/kleimkuhler/go-generate-test/examples/crd/apis/example/v1"
+	v1 "github.com/kleimkuhler/go-generate-test/examples/crd/apis/example2/v1"
 	"github.com/kleimkuhler/go-generate-test/examples/crd/clientset/versioned/scheme"
 	rest "k8s.io/client-go/rest"
 )
 
-type ExampleV1Interface interface {
+type FooV1Interface interface {
 	RESTClient() rest.Interface
-	ClusterTestTypesGetter
 	TestTypesGetter
 }
 
-// ExampleV1Client is used to interact with features provided by the example group.
-type ExampleV1Client struct {
+// FooV1Client is used to interact with features provided by the foo.bar group.
+type FooV1Client struct {
 	restClient rest.Interface
 }
 
-func (c *ExampleV1Client) ClusterTestTypes() ClusterTestTypeInterface {
-	return newClusterTestTypes(c)
-}
-
-func (c *ExampleV1Client) TestTypes(namespace string) TestTypeInterface {
+func (c *FooV1Client) TestTypes(namespace string) TestTypeInterface {
 	return newTestTypes(c, namespace)
 }
 
-// NewForConfig creates a new ExampleV1Client for the given config.
-func NewForConfig(c *rest.Config) (*ExampleV1Client, error) {
+// NewForConfig creates a new FooV1Client for the given config.
+func NewForConfig(c *rest.Config) (*FooV1Client, error) {
 	config := *c
 	if err := setConfigDefaults(&config); err != nil {
 		return nil, err
@@ -53,12 +48,12 @@ func NewForConfig(c *rest.Config) (*ExampleV1Client, error) {
 	if err != nil {
 		return nil, err
 	}
-	return &ExampleV1Client{client}, nil
+	return &FooV1Client{client}, nil
 }
 
-// NewForConfigOrDie creates a new ExampleV1Client for the given config and
+// NewForConfigOrDie creates a new FooV1Client for the given config and
 // panics if there is an error in the config.
-func NewForConfigOrDie(c *rest.Config) *ExampleV1Client {
+func NewForConfigOrDie(c *rest.Config) *FooV1Client {
 	client, err := NewForConfig(c)
 	if err != nil {
 		panic(err)
@@ -66,9 +61,9 @@ func NewForConfigOrDie(c *rest.Config) *ExampleV1Client {
 	return client
 }
 
-// New creates a new ExampleV1Client for the given RESTClient.
-func New(c rest.Interface) *ExampleV1Client {
-	return &ExampleV1Client{c}
+// New creates a new FooV1Client for the given RESTClient.
+func New(c rest.Interface) *FooV1Client {
+	return &FooV1Client{c}
 }
 
 func setConfigDefaults(config *rest.Config) error {
@@ -86,7 +81,7 @@ func setConfigDefaults(config *rest.Config) error {
 
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
-func (c *ExampleV1Client) RESTClient() rest.Interface {
+func (c *FooV1Client) RESTClient() rest.Interface {
 	if c == nil {
 		return nil
 	}

@@ -57,7 +57,7 @@ type testTypes struct {
 }
 
 // newTestTypes returns a TestTypes
-func newTestTypes(c *Example2V1Client, namespace string) *testTypes {
+func newTestTypes(c *FooV1Client, namespace string) *testTypes {
 	return &testTypes{
 		client: c.RESTClient(),
 		ns:     namespace,

@@ -20,7 +20,6 @@ import metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
-// +groupName=foo.bar
 
 // TestType is a top-level type. A client is created for it.
 type TestType struct {

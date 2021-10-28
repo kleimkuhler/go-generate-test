@@ -22,7 +22,7 @@ import (
 	"context"
 	"time"
 
-	v1 "github.com/kleimkuhler/go-generate-test/examples/crd/apis/example/v1"
+	v1 "github.com/kleimkuhler/go-generate-test/examples/crd/apis/example2/v1"
 	scheme "github.com/kleimkuhler/go-generate-test/examples/crd/clientset/versioned/scheme"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	types "k8s.io/apimachinery/pkg/types"
@@ -57,7 +57,7 @@ type testTypes struct {
 }
 
 // newTestTypes returns a TestTypes
-func newTestTypes(c *ExampleV1Client, namespace string) *testTypes {
+func newTestTypes(c *FooV1Client, namespace string) *testTypes {
 	return &testTypes{
 		client: c.RESTClient(),
 		ns:     namespace,
